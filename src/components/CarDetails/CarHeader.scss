@@ -1,0 +1,150 @@
+.car-details {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* LEFT THUMB COLUMN */
+.car-details__thumbs {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thumb {
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* IMAGE COLUMN */
+.car-details__image {
+  position: relative;
+  flex: 1;
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.car-details__image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.nav-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 50%;
+}
+
+/* INFO COLUMN */
+.car-details__info {
+  width: 420px;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.rating {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.rating span {
+  color: #555;
+}
+
+.reward-btn {
+  margin-left: 8px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.desc {
+  color: #555;
+  font-size: 14px;
+}
+
+.more {
+  color: #ff5722;
+  cursor: pointer;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.onroad {
+  display: block;
+  font-size: 14px;
+  color: #2874f0;
+  cursor: pointer;
+}
+
+.location {
+  font-size: 13px;
+  color: #777;
+}
+
+.location span {
+  color: #2874f0;
+}
+
+.cta-btn {
+  margin-top: 14px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.offer-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .car-details {
+    flex-direction: column;
+  }
+
+  .car-details__info {
+    width: 100%;
+  }
+
+  .car-details__thumbs {
+    flex-direction: row;
+    width: 100%;
+  }
+}

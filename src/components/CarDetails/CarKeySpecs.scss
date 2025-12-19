@@ -1,0 +1,77 @@
+@use "../../assets/_variables" as v;
+@use "../../assets/_mixins" as m;
+
+.specs {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 1200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  &__tabs {
+    display: flex;
+    gap: 24px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 20px;
+  }
+  &__tab {
+    background: none;
+    border: none;
+    font-weight: bold;
+    padding: 12px 0;
+    color: #666;
+    position: relative;
+
+    &.active {
+      color: #000;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: v.$primary-color;
+      }
+    }
+  }
+
+  &__content {
+    font-size: 1rem;
+    color: v.$text-color;
+    padding: 12px 0;
+  }
+  &__grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 70px;
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+    }
+    .label {
+      color: v.$secondary-color;
+    }
+    .value {
+      font-weight: 600;
+      color: v.$text-color;
+    }
+  }
+  &__view-all {
+    margin-top: 24px;
+    background: none;
+    border: none;
+    color: v.$primary-color;
+    font-weight: bold;
+    cursor: pointer;
+    justify-self: start;
+  }
+}
