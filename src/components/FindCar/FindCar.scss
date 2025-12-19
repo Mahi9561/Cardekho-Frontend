@@ -1,0 +1,83 @@
+@use "../../assets/_variables" as v;
+@use "../../assets/_mixins" as m;
+
+.find-car {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 20%;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  &__tabs {
+    display: flex;
+    margin-bottom: 15px;
+
+    button {
+      flex: 1;
+      padding: 1rem;
+      margin: 0.8rem;
+      background-color: #e9ecef;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      color: #555;
+      border-radius: 0.5rem;
+
+      &.active {
+        background-color: #21272e;
+        color: #fff;
+      }
+    }
+  }
+  &__radio-buttons {
+    margin-bottom: 15px;
+    // padding: 0 1rem;
+
+    label {
+      font-size: 1em;
+      color: v.$secondary-color;
+      cursor: pointer;
+      padding: 1rem;
+      input {
+        margin-right: 5px;
+      }
+      &.active {
+        color: v.$primary-color;
+      }
+    }
+  }
+  &__fields {
+    select {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 5px;
+      border: 1px solid #e3e3e3;
+      border-radius: 0.5rem;
+      font-size: 1em;
+      background-color: v.$bg-color;
+      color: v.$text-color;
+
+      &:focus {
+        border-color: v.$primary-color;
+        box-shadow: 0 0 0 3px rgba(v.$primary-color, 0.15);
+        outline: none;
+      }
+    }
+    option {
+      padding: 0.75rem 1rem; // More space for options
+    }
+
+    // Hover color for dropdown options (browser support varies)
+    select option:hover {
+      background-color: rgba(v.$primary-color, 0.12);
+      color: v.$primary-color;
+    }
+  }
+
+}
