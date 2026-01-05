@@ -25,3 +25,17 @@ export const getCars = async (filters: CarFilters = {}) => {
     handleError(error);
   }
 };
+
+export const getSingleCar = async (id: string) => {
+  try {
+    const singleCar = await httpClient.get(`/cars/${id}`);
+    console.log(singleCar);
+    return singleCar.data;
+  } catch (error: any) {
+    console.error(
+      "Error fetching brand data:",
+      error.response?.data || error.message
+    );
+    handleError(error);
+  }
+};

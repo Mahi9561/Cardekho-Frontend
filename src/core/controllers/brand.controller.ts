@@ -14,3 +14,17 @@ export const getBrand = async (
     next(error);
   }
 };
+
+export const getsingleBrand = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const singleBrand = await brands.getsingleBrand(id);
+    return res.status(200).json(singleBrand);
+  } catch (error) {
+    next(error);
+  }
+};
