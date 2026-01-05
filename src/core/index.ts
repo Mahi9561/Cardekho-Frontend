@@ -1,40 +1,49 @@
-// Minimal Node HTTP server for core (dev)
-import { createServer } from 'node:http';
+import http from 'http';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import appWrapper from './app';
 
-const PORT = Number(process.env.CORE_PORT || process.env.PORT || 6000);
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const server = createServer((req, res) => {
-	// Basic CORS
-	res.setHeader('Access-Control-Allow-Origin', CLIENT_ORIGIN);
-	res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	res.setHeader('Access-Control-Allow-Credentials', 'true');
+if (process.env.NODE_ENV !== 'production') {
+    const envPath = path.join(__dirname, '..', '..', '.env');
+    dotenv.config({
+        path: envPath,
+    });
+}
 
-	if (req.method === 'OPTIONS') {
-		res.statusCode = 204;
-		res.end();
-		return;
-	}
+const port = parseInt(process.env.API_CORE_PORT as string, 10) || 6000;
 
-	if (req.url === '/health') {
-		res.setHeader('Content-Type', 'application/json');
-		res.end(JSON.stringify({ status: 'ok' }));
-		return;
-	}
+const startServer = async () => {
+    try {
+        const app = await appWrapper();
+        app.set('port', port);
 
-	if (req.url === '/api/ping') {
-		res.setHeader('Content-Type', 'application/json');
-		res.end(JSON.stringify({ message: 'pong' }));
-		return;
-	}
+        http.createServer(app).listen(port, () => {
+            console.log(`🚀 Server is running on port ${port}`);
+            console.log(`📡 API available at http://localhost:${port}/api`);
+        });
+    } catch (error: any) {
+        if (error.syscall !== 'listen') {
+            throw error;
+        }
 
-	res.statusCode = 404;
-	res.setHeader('Content-Type', 'application/json');
-	res.end(JSON.stringify({ error: 'Not Found' }));
-});
+        // Handle specific listen errors with friendly messages
+        switch (error.code) {
+            case 'EACCES':
+                console.error(`❌ Port ${port} requires elevated privileges`);
+                process.exit(1);
+                break;
+            case 'EADDRINUSE':
+                console.error(`❌ Port ${port} is already in use`);
+                process.exit(1);
+                break;
+            default:
+                throw error;
+        }
+    }
+};
 
-server.listen(PORT, () => {
-	// eslint-disable-next-line no-console
-	console.log(`[core] server listening on http://localhost:${PORT}`);
-});
+startServer();
