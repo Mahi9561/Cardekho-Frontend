@@ -1,4 +1,3 @@
-import React from "react";
 import "./Homepage.scss";
 import Card from "../../components/Card/Card";
 

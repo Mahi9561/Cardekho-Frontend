@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import * as brands from "../services/brand.service";
 
 export const getBrand = async (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ) => {

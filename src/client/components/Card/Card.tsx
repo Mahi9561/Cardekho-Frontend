@@ -1,4 +1,3 @@
-import React from "react";
 import "./Card.scss";
 import demo from "../../assets/img/demo.avif";
 

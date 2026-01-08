@@ -1,4 +1,3 @@
-import React from "react";
 import "./generalHeader.scss";
 import logo from "../../assets/logo/carDekho.svg";
 import SearchBar from "../SearchBar/SearchBar";

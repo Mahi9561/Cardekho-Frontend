@@ -1,4 +1,3 @@
-import React from "react";
 import carImage from "../../assets/img/demo.avif";
 import "./CarHeader.scss";
 

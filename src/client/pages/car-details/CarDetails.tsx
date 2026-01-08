@@ -1,4 +1,3 @@
-import React from "react";
 import CarHeader from "../../components/CarDetails/CarHeader";
 import CarKeySpecs from "../../components/CarDetails/CarKeySpecs";
 

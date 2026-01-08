@@ -1,8 +1,19 @@
 import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
 
 // Create axios instance with default config
+const runtimeEnv: Record<string, string | undefined> =
+    ((import.meta as any)?.env as Record<string, string | undefined>) ??
+    ((globalThis as any)?.process?.env as Record<string, string | undefined>) ??
+    {};
+
+const baseURL =
+    runtimeEnv.VITE_API_BASE_URL ||
+    runtimeEnv.VITEAPI_BASE_URL ||
+    runtimeEnv.API_BASE_URL ||
+    'http://localhost:5000';
+
 const httpClient: AxiosInstance = axios.create({
-    baseURL: process.env.API_BASE_URL || 'http://localhost:5000',
+    baseURL,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
@@ -13,7 +24,8 @@ const httpClient: AxiosInstance = axios.create({
 httpClient.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         // Option 1: Use service account token (for backend-to-backend)
-        const serviceToken = process.env.SERVICE_ACCOUNT_TOKEN;
+        const serviceToken =
+            runtimeEnv.VITE_SERVICE_ACCOUNT_TOKEN || runtimeEnv.SERVICE_ACCOUNT_TOKEN;
         
         // Option 2: Get token from request context (passed from middleware)
         const requestToken = (config as any).userToken;
