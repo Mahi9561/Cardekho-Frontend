@@ -4,7 +4,6 @@ import "./CarKeySpecs.scss";
 
 function CarKeySpecs() {
   const [activeTab, setActiveTab] = React.useState("specs");
-  console.log(activeTab);
   return (
     <div className="specs">
       <h4 className="specs__title">Tata Sierra specs & features</h4>
@@ -28,7 +27,9 @@ function CarKeySpecs() {
                 <span className="value">{item.value}</span>
               </div>
             ))}
-            <button className="specs__view-all">View All Specs and Features →</button>
+            <button className="specs__view-all">
+              View All Specs and Features →
+            </button>
           </div>
         )}
         {activeTab === "features" && <p>Top features coming soon</p>}
