@@ -1,11 +1,18 @@
 import "./Homepage.scss";
 import Card from "../../components/Card/Card";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
     <div className="home-page">
-      <section>
-        <Card />
+      <section className="home-page__car-cards">
+        <h3 className="home-page__title">Electric cars</h3>
+        <Card fuel_type="Electric" limit={5} />
+        <div className="home-page__actions">
+          <Link to="/cars?fuel_type=Electric" className="home-page__view-all">
+            View all cars
+          </Link>
+        </div>
       </section>
     </div>
   );

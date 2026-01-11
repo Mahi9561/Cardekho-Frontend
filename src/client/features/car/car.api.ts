@@ -1,33 +1,39 @@
-import httpClient from "../../../core/utils/http-client";
+import axios from "axios";
 
 export type Car = {
-  id: string;
-  model: string;
-  brand: string;
-  price?: number;
-  transmission?: string;
-  fuelType?: string;
-  bodyType?: string;
+bootspace_litres?: number
+brand_name?: string
+engine_cc?: number
+fuel_type?: string
+id?: string
+launch_year?: string
+mileage_kmpl?: number
+model_name?: number
+price?: number
+safety_rating?: number
+seating_capacity?: number
+transmission?: string
+variant_name?: string
+
 };
 
 export type CarFilters = {
+  id?: string;
   model?: string;
   transmission?: string;
-  fuelType?: string;
+  fuel_type?: string;
   bodyType?: string;
   brand?: string;
   minPrice?: number;
   maxPrice?: number;
 };
 
-export const carApi = {
-  async getCars(filters: CarFilters = {}): Promise<Car[]> {
-    const res = await httpClient.get("/cars/getCars", { params: filters });
-    return res.data as Car[];
-  },
+export function getCars(filters: CarFilters) {
+  return axios.get(`/api/cars/getCars`, {
+    params: filters,
+  });
+}
 
-  async getCarById(id: string): Promise<Car> {
-    const res = await httpClient.get(`/cars/getCars/${id}`);
-    return res.data as Car;
-  },
-};
+export function getCarById(id: string) {
+  return axios.get(`/api/cars/getCars/${id}`);
+}

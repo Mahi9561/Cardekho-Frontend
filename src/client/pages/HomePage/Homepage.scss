@@ -3,4 +3,21 @@
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  margin-top: 20px;
+
+  &__title{
+    padding: 10px 0;
+  }
+
+  &__actions{
+    padding-top: 10px;
+  }
+
+  &__view-all {
+    text-align: right;
+    margin-bottom: 22px;
+    text-decoration: none;
+    color: #ff5a2c;
+    font-weight: 600;
+  }
 }

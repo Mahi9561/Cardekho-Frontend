@@ -1,0 +1,9 @@
+.all-cars-page {
+  padding: 16px;
+}
+
+.all-cars-page__car-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
