@@ -1,19 +1,17 @@
-import httpClient from "../../../core/utils/http-client";
+import axios from "axios";
 
 export type Brand = {
-	id: string;
-	name: string;
-	logoUrl?: string;
+  brand_id: string;
+  name: string;
+  // Support both backend snake_case and frontend camelCase
+  logo_url?: string;
+  logoUrl?: string;
 };
 
-export const brandApi = {
-	async getBrands(): Promise<Brand[]> {
-		const res = await httpClient.get("/brand");
-		return res.data as Brand[];
-	},
+export function brandApi() {
+  return axios.get(`/api/brand`);
+}
 
-	async getBrandById(id: string): Promise<Brand> {
-		const res = await httpClient.get(`/brand/${id}`);
-		return res.data as Brand;
-	},
-};
+export function getBrandById(id: string) {
+  return axios.get(`/api/brand/${id}`);
+}

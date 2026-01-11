@@ -1,11 +1,11 @@
 import CarDetails from "../car-details/CarDetails";
-// import CarFeatures from "../../components/car-features/CarFeatures";
+import CarFeatures from "../../components/car-features/CarFeatures";
 
 function Cardetails() {
   return (
     <>
       <CarDetails />
-      {/* <CarFeatures /> */}
+      <CarFeatures />
     </>
   );
 }

@@ -3,8 +3,8 @@ import httpClient from "../utils/http-client";
 
 export const getBrand = async () => {
   try {
-    const brand = await httpClient.get("/cars/getAllCars");
-    console.log(brand);
+    const brand = await httpClient.get("/brand/getbrands");
+    // console.log(brand);
     return brand.data;
   } catch (error: any) {
     console.error(

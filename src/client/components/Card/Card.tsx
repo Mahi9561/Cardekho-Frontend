@@ -10,15 +10,16 @@ import {
   selectCarError,
 } from "../../features/car/car.selector";
 import type { CarFilters } from "../../features/car/car.api";
+import { useNavigate } from "react-router-dom";
 
 type CardProps = Partial<CarFilters> & { filters?: CarFilters; limit?: number };
 
 function Card(props: CardProps) {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const cars = useSelector(selectCars);
   const loading = useSelector(selectCarLoading);
   const error = useSelector(selectCarError);
-
   const { filters, limit, ...directFilters } = props;
   const mergedFilters: CarFilters = { ...(filters ?? {}), ...directFilters };
 
@@ -43,7 +44,6 @@ function Card(props: CardProps) {
   if (cars.length === 0) {
     return <div className="car-card__status">No cars found</div>;
   }
-
   const visibleCars = typeof limit === "number" ? cars.slice(0, limit) : cars;
 
   return (
@@ -52,13 +52,15 @@ function Card(props: CardProps) {
         <div className="car-card" key={car.id}>
           <div className="car-card__image-wrapper">
             {/* <span className="car-card__badge">LAUNCHED ON : NOV 25, 2025</span> */}
-            <img src={demo} alt={`${car.brand_name} ${car.model_name}`} />
+            <img
+              src={demo}
+              alt={`${car.brand_name} ${car.model_name}`}
+              onClick={() => navigate(`/car-details/${car.id}`)}
+            />
           </div>
 
           <div className="car-card__content">
-            <h3 className="car-card__title">
-              {car.brand_name} {car.model_name}
-            </h3>
+            <h3 className="car-card__title">{car.model_name}</h3>
             <p className="car-card__price">
               {car.price
                 ? `₹${car.price.toLocaleString("en-IN")}`
