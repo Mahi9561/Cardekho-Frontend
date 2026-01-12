@@ -1,16 +1,46 @@
+import { useDispatch, useSelector } from "react-redux";
 import carImage from "../../assets/img/demo.avif";
 import "./CarHeader.scss";
-
+import {
+  selectCarError,
+  selectCarLoading,
+  selectSelectedCar,
+} from "../../features/car/car.selector";
+import type { AppDispatch } from "../../app/store";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { loadCarById } from "../../features/car/car.thunk";
 
 function CarHeader() {
+  const dispatch = useDispatch<AppDispatch>();
+  const car = useSelector(selectSelectedCar);
+  const loading = useSelector(selectCarLoading);
+  const error = useSelector(selectCarError);
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      dispatch(loadCarById(id));
+    }
+  }, [dispatch, id]);
+
+  if (loading) {
+    return <div className="car-card__status">Loading cars...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="car-card__status car-card__status--error">{error}</div>
+    );
+  }
+  if (!car) {
+    return <div className="car-card__status">No cars found</div>;
+  }
+  console.log(car);
   return (
     <div className="car-details">
-      {/* LEFT THUMB COLUMN */}
       <div className="car-details__thumbs">
-        <div className="thumb">
-          +6
-          Colours
-        </div>
+        <div className="thumb">+6 Colours</div>
         <div className="thumb">
           +121
           <br />
