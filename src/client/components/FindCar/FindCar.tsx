@@ -24,7 +24,7 @@ function FindCar() {
     };
   }
 
-  console.log("Budget Filter Params: ", buildBudgetFilterParams());
+  // console.log("Budget Filter Params: ", buildBudgetFilterParams());
   return (
     <div className="find-car">
       <h2 className="find-car__title">Find your right car</h2>
@@ -74,7 +74,7 @@ function FindCar() {
               value={budget}
               onChange={(e) => handleBudgetChange(e.target.value)}
             >
-              <option value=""></option>
+              <option value="">Select Budget</option>
               {BUDGET_RANGES.map((range) => (
                 <option key={range.label} value={range.label}>
                   {range.label}
@@ -85,7 +85,7 @@ function FindCar() {
               value={budget}
               onChange={(e) => handleBudgetChange(e.target.value)}
             >
-              <option value=""></option>
+              <option value="">All vehical Type</option>
               {BRAND_OPTIONS.map((brand) => (
                 <option key={brand} value={brand}>
                   {brand}
@@ -94,17 +94,30 @@ function FindCar() {
             </select>
           </>
         ) : (
-          <select
-            value={budget}
-            onChange={(e) => handleBudgetChange(e.target.value)}
-          >
-            <option value=""></option>
-            {BUDGET_RANGES.map((range) => (
-              <option key={range.label} value={range.label}>
-                {range.label}
-              </option>
-            ))}
-          </select>
+          <>
+            <select
+              value={budget}
+              onChange={(e) => handleBudgetChange(e.target.value)}
+            >
+              <option value="">Select Brand</option>
+              {BUDGET_RANGES.map((range) => (
+                <option key={range.label} value={range.label}>
+                  {range.label}
+                </option>
+              ))}
+            </select>
+            <select
+              value={budget}
+              onChange={(e) => handleBudgetChange(e.target.value)}
+            >
+              <option value="">Select Model</option>
+              {BUDGET_RANGES.map((range) => (
+                <option key={range.label} value={range.label}>
+                  {range.label}
+                </option>
+              ))}
+            </select>
+          </>
         )}
       </div>
       <button className="find-car__search-button">Search</button>
