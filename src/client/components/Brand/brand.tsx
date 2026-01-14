@@ -1,23 +1,8 @@
 import "./brand.scss";
-import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch } from "../../app/store";
-import {
-  selectBrandError,
-  selectBrandLoading,
-  selectBrands,
-} from "../../features/brand/brand.selector";
-import { useEffect } from "react";
-import { loadBrands } from "../../features/brand/brand.thunk";
+import { useFindBrands } from "../Hooks/useFindBrands";
 
 function Brand({ limit }: { limit?: number }) {
-  const dispatch = useDispatch<AppDispatch>();
-  const brands = useSelector(selectBrands);
-  const loading = useSelector(selectBrandLoading);
-  const error = useSelector(selectBrandError);
-
-  useEffect(() => {
-    dispatch(loadBrands());
-  }, [dispatch]);
+  const { brands, loading, error } = useFindBrands();
 
   if (loading) {
     return <div className="car-card__status">Loading brands...</div>;
@@ -37,7 +22,6 @@ function Brand({ limit }: { limit?: number }) {
       ? brands.slice(0, limit)
       : brands;
 
-  console.log(visiblebrands);
   return (
     <div className="brand-card-lists">
       {visiblebrands.map((brand) => (

@@ -29,7 +29,6 @@ export const getCars = async (filters: CarFilters = {}) => {
 export const getSingleCar = async (id: string) => {
   try {
     const singleCar = await httpClient.get(`/cars/${id}`);
-    console.log(singleCar);
     return singleCar.data;
   } catch (error: any) {
     console.error(

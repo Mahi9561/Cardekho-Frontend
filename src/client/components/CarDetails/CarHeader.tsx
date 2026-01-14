@@ -36,7 +36,6 @@ function CarHeader() {
   if (!car) {
     return <div className="car-card__status">No cars found</div>;
   }
-  console.log(car);
   return (
     <div className="car-details">
       <div className="car-details__thumbs">

@@ -24,8 +24,8 @@ export type CarFilters = {
   fuel_type?: string;
   bodyType?: string;
   brand?: string;
-  minPrice?: number;
-  maxPrice?: number;
+  price_min?: number;
+  price_max?: number;
 };
 
 export function getCars(filters: CarFilters) {

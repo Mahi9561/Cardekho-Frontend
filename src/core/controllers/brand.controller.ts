@@ -8,7 +8,6 @@ export const getBrand = async (
 ) => {
   try {
     const brand = await brands.getBrand();
-    // console.log(brand);
     return res.status(200).json(brand);
   } catch (error) {
     next(error);

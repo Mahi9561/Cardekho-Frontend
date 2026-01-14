@@ -17,16 +17,16 @@ export type UseFindCarParams = CarFilters & {
 export function useFindCar(params: UseFindCarParams = {}) {
   const dispatch = useDispatch<AppDispatch>();
   const cars = useSelector(selectCars);
-  const loading = useSelector(selectCarLoading);
-  const error = useSelector(selectCarError);
+  const carLoading = useSelector(selectCarLoading);
+  const carError = useSelector(selectCarError);
 
   const { filters, enabled = true, ...directFilters } = params;
+  const directKey = useMemo(() => JSON.stringify(directFilters ?? {}), [directFilters]);
 
   const mergedFilters: CarFilters = useMemo(() => {
     return { ...(filters ?? {}), ...directFilters };
-  }, [filters, directFilters]);
+  }, [filters, directKey]);
 
-  console.log(mergedFilters);
   const reload = useCallback(() => {
     if (!enabled) return;
     dispatch(loadCars(mergedFilters));
@@ -36,5 +36,5 @@ export function useFindCar(params: UseFindCarParams = {}) {
     reload();
   }, [reload]);
 
-  return { cars, loading, error, reload, filters: mergedFilters };
+  return { cars, carLoading, carError, reload, filters: mergedFilters };
 }
