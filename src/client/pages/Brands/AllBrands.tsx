@@ -1,5 +1,5 @@
 import "./AllBrands.scss";
-import { useFindBrands } from "../../components/Hooks/useFindBrands";
+import { useFindBrands } from "../../Hooks/useFindBrands";
 
 function AllBrands() {
 	const { brands, loading, error } = useFindBrands();

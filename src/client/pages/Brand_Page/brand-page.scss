@@ -1,0 +1,11 @@
+.brand-page {
+  max-width: 1278px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  &__container{
+    width: 80%;
+  }
+}

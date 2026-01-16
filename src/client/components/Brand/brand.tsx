@@ -1,5 +1,5 @@
 import "./brand.scss";
-import { useFindBrands } from "../Hooks/useFindBrands";
+import { useFindBrands } from "../../Hooks/useFindBrands";
 
 function Brand({ limit }: { limit?: number }) {
   const { brands, loading, error } = useFindBrands();

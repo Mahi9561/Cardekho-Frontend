@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch } from "../../app/store";
+import type { AppDispatch } from "../app/store";
 import {
 	selectBrandError,
 	selectBrandLoading,
 	selectBrands,
-} from "../../features/brand/brand.selector";
-import { loadBrands } from "../../features/brand/brand.thunk";
+} from "../features/brand/brand.selector";
+import { loadBrands } from "../features/brand/brand.thunk";
 
 export type UseFindBrandsParams = {
 	enabled?: boolean;

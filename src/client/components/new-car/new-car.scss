@@ -1,0 +1,100 @@
+.new-cars {
+  width: 100%;
+  padding: 1rem;
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  &__card {
+    display: flex;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  &__img-container {
+    width: 240px;
+    flex: 0 0 240px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__car-details {
+    flex: 1;
+    padding: 1rem 1.25rem;
+  }
+
+  &__car-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #111827;
+  }
+
+  &__car-nameplate {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__cars-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  &__cars-ex-showroom{
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+  }
+
+  &__view-offers-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid #ff5a2c;
+    background: #fff;
+    color: #ff5a2c;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  &__view-offers-button:hover {
+    background: #ff5a2c;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    &__card {
+      flex-direction: column;
+    }
+    &__img-container {
+      width: 100%;
+      flex: 0 0 auto;
+    }
+    img {
+      height: 200px;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch } from "../../app/store";
-import { loadCars } from "../../features/car/car.thunk";
-import type { CarFilters } from "../../features/car/car.api";
+import type { AppDispatch } from "../app/store";
+import { loadCars } from "../features/car/car.thunk";
+import type { CarFilters } from "../features/car/car.api";
 import {
   selectCarError,
   selectCarLoading,
   selectCars,
-} from "../../features/car/car.selector";
+} from "../features/car/car.selector";
 
 export type UseFindCarParams = CarFilters & {
   filters?: CarFilters;

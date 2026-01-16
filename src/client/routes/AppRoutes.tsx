@@ -5,7 +5,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import Cardetails from "../pages/CarDetails/Cardetails";
 import AllCars from "../pages/AllCars/AllCars";
 import AllBrands from "../pages/Brands/AllBrands";
-import NewCars from "../pages/NewCars/new-cars";
+import BrandPage from "../pages/Brand_Page/brand-page";
 
 function AppRoutes() {
   return (
@@ -15,7 +15,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cars" element={<AllCars />} />
-        <Route path="/new-cars" element={<NewCars />} />
+        <Route path="/new-cars" element={<BrandPage />} />
         <Route path="/brand" element={<AllBrands />} />
         <Route path="/car-details/:id?" element={<Cardetails />} />
       </Routes>

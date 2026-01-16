@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { BUDGET_RANGES } from "../../constants/budget.config";
 import "./FindCar.scss";
-import { useFindCar } from "../Hooks/useFindCar";
-import { useFindBrands } from "../Hooks/useFindBrands";
+import { useFindCar } from "../../Hooks/useFindCar";
+import { useFindBrands } from "../../Hooks/useFindBrands";
 import { useNavigate } from "react-router-dom";
 
 type CarType = "new" | "used";
