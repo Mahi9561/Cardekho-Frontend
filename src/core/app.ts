@@ -58,6 +58,13 @@ export default async () => {
     // API routes
     app.use('/api', indexRouter);
 
+    // Return JSON 404s for unknown API routes (avoid serving the SPA for /api/*)
+    app.use('/api', (_req: Request, res: Response) => {
+        res.status(404).json({
+            message: 'API route not found',
+        });
+    });
+
     // Error handling middleware
     app.use(errorHandlerMiddleware);
 

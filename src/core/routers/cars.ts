@@ -5,4 +5,5 @@ const carsRouter = express.Router();
 
 carsRouter.get("/getCars", getCar);
 carsRouter.get("/getCars/:id", getSingleCar);
+
 export default carsRouter;
