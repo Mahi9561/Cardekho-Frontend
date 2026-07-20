@@ -25,7 +25,7 @@ function CarHeader() {
   }, [dispatch, id]);
 
   const cars = useSelector(selectSelectedCar);
-
+  console.log("cars", cars);
   console.log("cars", cars);
   if (loading) {
     return <div className="car-card__status">Loading cars...</div>;
