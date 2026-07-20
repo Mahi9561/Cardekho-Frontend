@@ -27,7 +27,7 @@ function CarKeySpecs() {
                 <span className="value">{item.value}</span>
               </div>
             ))}
-            <button className="specs__view-all">
+            <button className="specs__view-all" onClick={() => {}}>
               View All Specs and Features →
             </button>
           </div>

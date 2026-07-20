@@ -24,6 +24,9 @@ function CarHeader() {
     }
   }, [dispatch, id]);
 
+  const cars = useSelector(selectSelectedCar);
+
+  console.log("cars", cars);
   if (loading) {
     return <div className="car-card__status">Loading cars...</div>;
   }
@@ -51,13 +54,16 @@ function CarHeader() {
 
       {/* MAIN IMAGE */}
       <div className="car-details__image">
-        <img src={carImage} alt="Tata Sierra" />
+        <img
+          src={carImage}
+          alt={`${car?.brand_name || "Brand"} ${car?.model_name || "Model"}`}
+        />
         {/* <button className="nav-arrow right">›</button> */}
       </div>
 
       {/* INFO SECTION */}
       <div className="car-details__info">
-        <h1 className="title">Tata Sierra</h1>
+        <h1 className="title">{car?.model_name || "Model"}</h1>
 
         <div className="rating">
           ⭐ 4.8 <span>133 Reviews</span>
@@ -71,7 +77,7 @@ function CarHeader() {
         </p>
 
         <div className="price">
-          ₹ 11.49 - 21.29 Lakh*
+          {car?.price ? `₹ ${car.price.toLocaleString()}` : "Price Unavailable"}
           <span className="onroad">Get On-Road Price</span>
         </div>
 
